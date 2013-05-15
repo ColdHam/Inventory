@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cp -R ~/invcontrol/spike /var/www
+cp -R ~/invcontrol/src /var/www
+cp -R ~/invcontrol/test /var/www
+cp ~/invcontrol/index.html /var/www

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Jasmine Spec Runner</title>
+
+    <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.2.0.rc3/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0.rc3/jasmine.css">
+    <script type="text/javascript" src="lib/jasmine-1.2.0.rc3/jasmine.js"></script>
+    <script type="text/javascript" src="lib/jasmine-1.2.0.rc3/jasmine-html.js"></script>
+
+    <script src="../src/js/libs/jquery-1.7.1.min.js"></script>
+    <script src="../src/js/libs/jquery.cookie.js"></script>
+    <script src="../src/js/libs/underscore-min.js"></script>
+    <script src="../src/js/libs/backbone-min.js"></script>
+    <script src="../src/js/libs/jquery.md5.js"></script>
+
+    <!-- include source files here... -->
+
+    <script src="../src/js/utils.js"></script>
+
+    <script src="../src/js/models/itemModel.js"></script>
+    <script src="../src/js/models/userModel.js"></script>
+    <script src="../src/js/models/categoryModel.js"></script>
+    <script src="../src/js/models/logModel.js"></script>
+    <script src="../src/js/models/vendorModel.js"></script>
+
+    <script src="../src/js/views/Login.js"></script>
+    <script src="../src/js/views/header.js"></script>
+    <script src="../src/js/views/itemList.js"></script>
+    <script src="../src/js/views/itemDetails.js"></script>
+    <script src="../src/js/views/start.js"></script>
+    <script src="../src/js/views/categorySelect.js"></script>
+    <script src="../src/js/views/vendorSelect.js"></script>
+    <script src="../src/js/views/logList.js"></script>
+    <script src="../src/js/views/optionsMenu.js"></script>
+    <script src="../src/js/views/item404.js"></script>
+
+
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="spec/supplyTest.js"></script>
+    
+    <script type="text/javascript">
+      (function() {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+
+        var htmlReporter = new jasmine.HtmlReporter();
+
+        jasmineEnv.addReporter(htmlReporter);
+
+        jasmineEnv.specFilter = function(spec) {
+          return htmlReporter.specFilter(spec);
+        };
+
+        var currentWindowOnload = window.onload;
+
+        window.onload = function() {
+          if (currentWindowOnload) {
+            currentWindowOnload();
+          }
+          execJasmine();
+        };
+
+        function execJasmine() {
+          jasmineEnv.execute();
+        }
+
+      })();
+    </script>
+
+  </head>
+
+  <body></body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Learning About Backbone.js Models</title>
+  </head>
+
+  <body>
+    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+    <script type="text/javascript">
+      
+      Item = Backbone.Model.extend({
+        initialize: function() {
+          console.log('hello world');
+        },
+        defaults: {
+          name:"a la paper",
+          quantity: "1"
+        }
+      });
+
+      var ItemsCollection = Backbone.Collection.extend({
+        initialize: function () {
+          console.log("Items Collection is Initialized");
+        },
+        model: Item
+      });
+      
+      var item = new Item({name:"paper"});
+      
+      var itemsCollection = new ItemsCollection(item);
+      itemsCollection.add([{name:"pen"}, {name:"Pencil"}]);
+      console.log(itemsCollection.toJSON());
+      
+      itemsCollection.remove(item);
+      console.log(itemsCollection.toJSON());
+      
+      itemsCollection.reset({name:"paper", id:0});
+      console.log(itemsCollection.toJSON());
+      itemsCollection.add([{name:"pen", id:1}, {name:"Pencil", id:2}]);
+      
+      
+      console.log(itemsCollection.models);
+      console.log(itemsCollection.toJSON());
+
+      console.log(itemsCollection.get(1).toJSON());
+
+      console.log(itemsCollection.pluck("name"));
+      
+      console.log(itemsCollection.where({name:'paper'}));
+
+//      itemCollections.on('remove', function(){});
+
+    </script>
+  </body>
+</html>

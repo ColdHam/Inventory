@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Learning About Backbone.js Models</title>
+  </head>
+
+  <body>
+    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+    <script type="text/javascript">
+      
+      Item = Backbone.Model.extend({
+        initialize: function() {
+          console.log('hello world');
+          this.bind("change:name", function(){
+            console.log(this.get('name') + " is the shit");
+          });
+          this.bind("error", function(model, error) {
+            console.log(error);
+          });
+        },
+        defaults: {
+          name:"a la paper",
+          quantity: "1"
+        },
+        validate: function (attributes) {
+          if (attributes.name == 'super paper') {
+            return "Oh snap";
+          }
+        }
+      });
+      
+      var item = new Item({name:'Paper', quantity:'5'});
+      console.log(item.get('name'));
+      var item2 = new Item();
+      console.log(item2.get('name'));
+      item2.set({name:'super paper'});
+      console.log(item2.get('name'));
+      
+      console.log(item.toJSON());
+      console.log(item.attributes);
+    </script>
+  </body>
+</html>

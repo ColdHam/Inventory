@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Learning About Backbone.js Views</title>
+    
+  </head>
+  <body>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+    <script type="text/javascript">
+
+      var Router = Backbone.Router.extend({
+        routes: {
+          "foo/:bar" : "paramtest",
+          "*action" : "func"
+        },
+        func: function (action) {
+          console.log(action);
+        },
+        paramtest: function (p) {
+          console.log(p);
+        }
+      });
+      
+      new Router();
+      
+      Backbone.history.start();
+
+
+    </script>
+    
+  </body>
+</html>
